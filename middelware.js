@@ -52,7 +52,7 @@ module.exports.validateReview = (req, res, next) => {
 
 module.exports.isReviwAuthor = async (req, res, next) => {
     const { id, reviewId } = req.params
-    const review = await Campground.findById(reviewId)
+    const review = await Review.findById(reviewId)
     if (!review.author.equals(req.user._id)) {
         req.flash('error', 'you do not have permission')
        return res.redirect(`/campgrounds/${id}`)
